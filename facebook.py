@@ -1,3 +1,5 @@
+from getpass import getpass
+
 users = []
 posts = []
 comments = []
@@ -49,7 +51,6 @@ class Post():
 		self.author = author
 		self.title = title
 
-
 	def remove_comment(self):
 		self.list_comments.remove(comment)
 
@@ -67,23 +68,55 @@ class Comment(Post):
 		self.comment = comment
 
 
+# Init users
+users.append(User("shoba", "shoba2004@meet.mit.sho", "shoba_the_king"))
+users.append(User("doba", "doba334@meet.mit.sym", "doba55512"))
+users.append(User("Test account", "2", "3"))
 
-user1 = User("shoba", "shoba2004@meet.mit.sho", "shoba_the_king")
-user2 = User("doba", "doba334@meet.mit.sym", "doba55512")
+print("--------------------------------------")
+# Login / Create new user
+ans = ""
+while ans != "yes" and ans !="no":
+	ans = raw_input("Do you have an account? (yes/no) ")
 
-Iemail = input("what is your email?")
-Ipass = input("what is your password?")
-for x in users:
-	if Iemail == x.email and Ipass == x.password:
-		print(x.name + " you are logged in!")
+legalUser = False
+if ans == "yes":
+	# Login
+	Iemail = raw_input("What is your email? ")
+	print("What is your password? ")
+	Ipass = getpass()
+	for x in users:
+		if Iemail == x.email and Ipass == x.password:
+			user = x
+			legalUser = True
+			break
+	if not(legalUser):
+		print("You are not a user! try hacking in to some other system!!!")
+		quit()
+else:
+	# New user
+	Iname = raw_input("What is your name? ")
+	Iemail = raw_input("What is your email? ")
+	print("What is your password? ")
+	Ipass = getpass()
+	user = User(Iname, Iemail, Ipass)
+	users.append(user)
+	
+# Activity
+print("--------------------------------------")
+print("You are logged in as " + user.name)
+action = ""
+while action != "quit":
+	action = raw_input("What would you like to do? (post/comment/quit) ")
+	
+print("Bye!")	
 
-
+"""
 user2.add_friend(user1.email)
 user1.add_friend(user2.email)
 user1.post("hey", "21.10", 32, "fir post")
 user2.post("you", "3.2", 4, "se post")
 user1.get_useInfo()
 user2.remove_friend(user1.email)
-
 user1.add_comment("yryyrry", "3.24", 233, "se post")
-
+"""
