@@ -37,11 +37,8 @@ class User():
 		for x in posts:
 			if self.email == x.author:
 				my_post.append(x)
-		print("Name: " + self.name + "\nEmail: " + self.email + "\nPassword: " + self.password)
-		print("Friends: " + str(self.friend_list) + "\nPosts: " + str(x.title))
-
-
-
+				print("Name: " + self.name + "\nEmail: " + self.email)
+				print("Friends: " + str(self.friend_list) + "\nPosts: " + str(x.title))
 
 class Post():
 	def __init__ (self, comment, date, likes, author, title):
@@ -55,11 +52,11 @@ class Post():
 		self.list_comments.remove(comment)
 
 	def the_date(self,date):
-		print("posted on " + self.date)
+		print("Posted on " + self.date)
 
 	def add_like(self,likes):
 		likes = likes + 1
-		print("likes: " + str(likes) + "M")
+		print("Likes: " + str(likes) + "M")
 
 
 class Comment(Post):
@@ -67,10 +64,12 @@ class Comment(Post):
 		Post.__init__(self, comment, date, likes, author, title)
 		self.comment = comment
 
-
-# Init users
-users.append(User("shoba", "shoba2004@meet.mit.sho", "shoba_the_king"))
-users.append(User("doba", "doba334@meet.mit.sym", "doba55512"))
+############################ MAIN ################################
+# Init users (util data is saved to files)
+user1 = User("shoba", "shoba2004@meet.mit.sho", "shoba_the_king")
+users.append(user1)
+user2 = User("doba", "doba334@meet.mit.sym", "doba55512")
+users.append(user2)
 users.append(User("Test account", "2", "3"))
 
 print("--------------------------------------")
