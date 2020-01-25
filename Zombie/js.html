@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<button onclick= "tooSlow()"> ok </button>
+	<script>
+	tooSlow()
+	function tooSlow(){
+		setTimeout(
+			function(){
+				alert("You're dead!!! you were too slow!!!");
+				var ans = window.confirm("would you like to play again?")
+				if (ans == yes){
+					window.locition= 'zombie.html';
+				}else{
+					window.location= 'theEnd.html';ד
+				}
+			} , 2000);
+	}
+
+		
+	</script>
+</body>
+</html>
